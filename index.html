@@ -189,7 +189,6 @@
     </style>
 </head>
 <body>
-    <!-- Главный экран -->
     <div class="main-screen" id="main-screen">
         <div class="welcome-text">
             <h1>F.O.E. - Сопровождение в Венгрии</h1>
@@ -203,7 +202,6 @@
         </div>
     </div>
 
-    <!-- Раздел "О нас" -->
     <div class="content-section" id="about">
         <h2 class="section-title">О нас</h2>
         <div class="about-content">
@@ -223,7 +221,6 @@
         </div>
     </div>
 
-    <!-- Раздел "Наши возможности" -->
     <div class="content-section" id="capabilities">
         <h2 class="section-title">Наши возможности</h2>
         <div class="capabilities-content">
@@ -250,7 +247,6 @@
         </div>
     </div>
 
-    <!-- Раздел "Контакты" -->
     <div class="content-section" id="contacts">
         <h2 class="section-title">Контакты</h2>
         <div class="contacts-content">
@@ -265,36 +261,30 @@
 
     <script>
         function showSection(sectionId) {
-            // Скрыть главный экран
             document.getElementById('main-screen').style.display = 'none';
             
-            // Скрыть все разделы
             const sections = document.querySelectorAll('.content-section');
             sections.forEach(section => {
                 section.style.display = 'none';
             });
             
-            // Показать выбранный раздел
             document.getElementById(sectionId).style.display = 'block';
             
-            // Прокрутить к началу раздела
             window.scrollTo(0, 0);
         }
         
         function showMainScreen() {
-            // Скрыть все разделы
             const sections = document.querySelectorAll('.content-section');
             sections.forEach(section => {
                 section.style.display = 'none';
             });
             
-            // Показать главный экран
             document.getElementById('main-screen').style.display = 'flex';
             
-            // Прокрутить к началу
             window.scrollTo(0, 0);
         }
     </script>
 </body>
 </html>
+
 
