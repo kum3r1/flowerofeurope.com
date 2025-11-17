@@ -13,12 +13,11 @@
         }
         
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-color: #f5f7fa;
             color: #333;
             line-height: 1.6;
             overflow-x: hidden;
             font-family: 'Open Sans', sans-serif;
-            min-height: 100vh;
         }
         
         h1, h2, h3, h4, h5, h6 {
@@ -26,9 +25,32 @@
             font-weight: 600;
         }
         
+        .language-selector {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        .lang-btn {
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        
+        .lang-btn:hover {
+            background: #4CAF50;
+            color: white;
+        }
+        
         .main-screen {
             height: 100vh;
-            background: linear-gradient(rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8)), 
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
                         url('https://kidpassage.com/images/activity/zdanie-vengerskogo-parlamenta/Vengerskiy_Parlament_01623785932.jpg');
             background-size: cover;
             background-position: center;
@@ -50,14 +72,14 @@
         .welcome-text h1 {
             font-size: 3.2rem;
             margin-bottom: 1.5rem;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
             animation: slideDown 1s ease-out;
         }
         
         .welcome-text p {
             font-size: 1.3rem;
             margin-bottom: 1rem;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
             animation: slideUp 1s ease-out 0.3s both;
         }
         
@@ -70,170 +92,122 @@
         }
         
         .nav-btn {
-            padding: 1.2rem 2.5rem;
-            background: rgba(255, 255, 255, 0.15);
-            border: 2px solid rgba(255, 255, 255, 0.8);
-            border-radius: 50px;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+            border-radius: 30px;
             color: white;
             font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.4s;
-            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+            backdrop-filter: blur(5px);
             font-family: 'Montserrat', sans-serif;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .nav-btn:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: 0.5s;
-        }
-        
-        .nav-btn:hover:before {
-            left: 100%;
         }
         
         .nav-btn:hover {
-            background: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.3);
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
         
         .content-section {
             display: none;
-            padding: 5rem 2rem;
-            max-width: 1100px;
+            padding: 4rem 2rem;
+            max-width: 1000px;
             margin: 0 auto;
             animation: slideInFromRight 0.8s ease-out;
         }
         
-        .section-title {
-            font-size: 2.8rem;
-            margin-bottom: 3rem;
-            text-align: center;
+        .section-nav {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .section-nav-btn {
+            padding: 0.7rem 1.5rem;
+            background: #4CAF50;
             color: white;
-            position: relative;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.3s;
+        }
+        
+        .section-nav-btn:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #2c3e50;
+            border-bottom: 3px solid #4CAF50;
+            padding-bottom: 0.5rem;
             animation: fadeIn 0.8s ease-out 0.2s both;
         }
         
-        .section-title:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(90deg, #FFD700, #FFA500);
-            border-radius: 2px;
-        }
-        
-        .about-content, .capabilities-content, .contacts-content {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        .about-content, .capabilities-content, .contacts-content, .reviews-content {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             line-height: 1.8;
             animation: fadeIn 0.8s ease-out 0.4s both;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .about-content:before, .capabilities-content:before, .contacts-content:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
         }
         
         .about-content p {
-            margin-bottom: 2rem;
-            font-size: 1.15rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
             animation: fadeIn 0.8s ease-out 0.6s both;
-            position: relative;
-            padding-left: 2rem;
-        }
-        
-        .about-content p:before {
-            content: '»';
-            position: absolute;
-            left: 0;
-            color: #667eea;
-            font-weight: bold;
-            font-size: 1.5rem;
         }
         
         .legend {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 3rem;
-            padding: 2rem;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            border-radius: 15px;
-            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #f0f4f8;
+            border-radius: 10px;
+            gap: 1rem;
             animation: fadeIn 0.8s ease-out 0.4s both;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
         }
         
         .legend-item {
             flex: 1;
             text-align: center;
-            padding: 1.5rem;
-            border-radius: 12px;
+            padding: 1rem;
+            border-radius: 8px;
             font-weight: 600;
             font-family: 'Montserrat', sans-serif;
-            transition: all 0.4s;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .legend-item:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, transparent 100%);
-            opacity: 0;
-            transition: 0.3s;
-        }
-        
-        .legend-item:hover:before {
-            opacity: 1;
+            transition: transform 0.3s;
         }
         
         .legend-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
         }
         
         .legend-1 {
-            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            background: #e3f2fd;
             color: #1565c0;
-            border: 2px solid #90caf9;
+            border-left: 4px solid #1565c0;
         }
         
         .legend-2 {
-            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            background: #e8f5e9;
             color: #2e7d32;
-            border: 2px solid #a5d6a7;
+            border-left: 4px solid #2e7d32;
         }
         
         .legend-3 {
-            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            background: #fff3e0;
             color: #ef6c00;
-            border: 2px solid #ffcc80;
+            border-left: 4px solid #ef6c00;
         }
         
         .capabilities-list {
@@ -241,20 +215,12 @@
         }
         
         .capabilities-list li {
-            padding: 1.5rem;
-            border-bottom: 1px solid #e0e0e0;
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
             font-size: 1.1rem;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             animation: fadeIn 0.8s ease-out both;
-            transition: all 0.3s;
-            border-radius: 10px;
-            margin-bottom: 0.5rem;
-        }
-        
-        .capabilities-list li:hover {
-            background: rgba(102, 126, 234, 0.05);
-            transform: translateX(10px);
         }
         
         .capabilities-list li:nth-child(1) { animation-delay: 0.5s; }
@@ -276,131 +242,132 @@
         
         .capability-text {
             flex: 1;
-            font-weight: 500;
         }
         
         .capability-badges {
             display: flex;
-            gap: 0.8rem;
-            margin-left: 1.5rem;
+            gap: 0.5rem;
+            margin-left: 1rem;
         }
         
         .badge {
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
             font-size: 0.9rem;
-            font-weight: 700;
+            font-weight: 600;
             font-family: 'Montserrat', sans-serif;
-            transition: all 0.3s;
-            min-width: 40px;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
         }
         
         .badge:hover {
-            transform: scale(1.15) rotate(5deg);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            transform: scale(1.1);
         }
         
         .badge-1 {
-            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            background: #e3f2fd;
             color: #1565c0;
-            border: 2px solid #90caf9;
+            border: 1px solid #1565c0;
         }
         
         .badge-2 {
-            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            background: #e8f5e9;
             color: #2e7d32;
-            border: 2px solid #a5d6a7;
+            border: 1px solid #2e7d32;
         }
         
         .badge-3 {
-            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            background: #fff3e0;
             color: #ef6c00;
-            border: 2px solid #ffcc80;
+            border: 1px solid #ef6c00;
         }
         
         .capabilities-list li:last-child {
             border-bottom: none;
         }
         
-        .contacts-content {
-            text-align: center;
+        .capabilities-list li:before {
+            content: "•";
+            color: #4CAF50;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-right: 0.5em;
         }
         
         .contacts-content p {
-            margin-bottom: 2rem;
-            font-size: 1.3rem;
-            padding: 1.5rem;
-            border-radius: 15px;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            animation: fadeIn 0.8s ease-out both;
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            padding-left: 1rem;
+            border-left: 3px solid #4CAF50;
         }
         
-        .contacts-content p:before {
-            content: '✆';
-            margin-right: 1rem;
-            font-size: 1.5rem;
+        .review-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
         }
         
-        .contacts-content p:nth-child(4):before {
-            content: '✉';
+        .form-group {
+            display: flex;
+            flex-direction: column;
         }
         
-        .contacts-content p:nth-child(3):before {
-            content: '📱';
+        .form-group label {
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
         }
         
-        .contacts-content p:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        .form-group input,
+        .form-group textarea {
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
         }
         
-        .contacts-content p:nth-child(1) { animation-delay: 0.5s; }
-        .contacts-content p:nth-child(2) { animation-delay: 0.6s; }
-        .contacts-content p:nth-child(3) { animation-delay: 0.7s; }
-        .contacts-content p:nth-child(4) { animation-delay: 0.8s; }
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
         
-        .back-btn {
-            display: block;
-            margin: 3rem auto 0;
-            padding: 1rem 3rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .submit-btn {
+            padding: 1rem 2rem;
+            background: #4CAF50;
             color: white;
             border: none;
-            border-radius: 50px;
+            border-radius: 5px;
             font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.4s;
+            transition: all 0.3s;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .submit-btn:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+        
+        .back-btn {
+            display: block;
+            margin: 2rem auto 0;
+            padding: 0.8rem 2rem;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
             font-family: 'Montserrat', sans-serif;
             animation: fadeIn 0.8s ease-out 1s both;
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .back-btn:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: 0.5s;
-        }
-        
-        .back-btn:hover:before {
-            left: 100%;
         }
         
         .back-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+            background: #45a049;
         }
         
         @keyframes fadeIn {
@@ -487,15 +454,15 @@
             
             .nav-btn {
                 width: 100%;
-                max-width: 280px;
+                max-width: 250px;
             }
             
             .section-title {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
             
             .content-section {
-                padding: 3rem 1rem;
+                padding: 2rem 1rem;
             }
             
             .legend {
@@ -504,82 +471,106 @@
             
             .capabilities-list li {
                 flex-direction: column;
-                text-align: center;
             }
             
             .capability-badges {
                 margin-left: 0;
-                margin-top: 1rem;
-                justify-content: center;
+                margin-top: 0.5rem;
+                justify-content: flex-start;
             }
             
-            .about-content, .capabilities-content, .contacts-content {
-                padding: 2rem;
+            .section-nav {
+                flex-direction: column;
+                align-items: center;
             }
             
-            .about-content p {
-                padding-left: 1.5rem;
+            .section-nav-btn {
+                width: 100%;
+                max-width: 200px;
             }
         }
     </style>
 </head>
 <body>
+    <div class="language-selector">
+        <select id="languageSelect" class="lang-btn" onchange="changeLanguage(this.value)">
+            <option value="ru">Русский</option>
+            <option value="uk">Українська</option>
+            <option value="hu">Magyar</option>
+            <option value="sk">Slovenčina</option>
+            <option value="de">Deutsch</option>
+            <option value="pl">Polski</option>
+            <option value="en">English</option>
+        </select>
+    </div>
+
     <div class="main-screen" id="main-screen">
         <div class="welcome-text">
-            <h1>F.O.E. - Сопровождение в Венгрии</h1>
-            <p>Мы помогаем украинцам и русским с оформлением документов и адаптацией в Венгрии, Германии и Словакии</p>
-            <p>Сохраним ваш самый ценный актив - время!</p>
+            <h1 id="main-title">F.O.E. - Сопровождение в Венгрии</h1>
+            <p id="main-subtitle">Мы помогаем украинцам и русским с оформлением документов и адаптацией в Венгрии, Германии и Словакии</p>
+            <p id="main-motto">Сохраним ваш самый ценный актив - время!</p>
         </div>
         <div class="nav-buttons">
-            <button class="nav-btn" onclick="showSection('about')">О нас</button>
-            <button class="nav-btn" onclick="showSection('capabilities')">Наши возможности</button>
-            <button class="nav-btn" onclick="showSection('contacts')">Контакты</button>
+            <button class="nav-btn" onclick="showSection('about')" id="nav-about">О нас</button>
+            <button class="nav-btn" onclick="showSection('capabilities')" id="nav-capabilities">Наши возможности</button>
+            <button class="nav-btn" onclick="showSection('reviews')" id="nav-reviews">Отзывы</button>
+            <button class="nav-btn" onclick="showSection('contacts')" id="nav-contacts">Контакты</button>
         </div>
     </div>
 
     <div class="content-section" id="about">
-        <h2 class="section-title">О нас</h2>
+        <div class="section-nav">
+            <button class="section-nav-btn" onclick="showSection('main-screen')" id="nav-main">Главная</button>
+            <button class="section-nav-btn" onclick="showSection('capabilities')" id="nav-capabilities2">Наши возможности</button>
+            <button class="section-nav-btn" onclick="showSection('reviews')" id="nav-reviews2">Отзывы</button>
+            <button class="section-nav-btn" onclick="showSection('contacts')" id="nav-contacts2">Контакты</button>
+        </div>
+        <h2 class="section-title" id="about-title">О нас</h2>
         <div class="about-content">
-            <p>Мы команда энтузиастов живущие в ЕС с 2018-го года. И как это часто бывает, на ровне со всеми прошли определенную бюрократическую школу - от поиска работы по приезду, до оформления сопутствующих документов необходимых для комфортного прибывания в странах проживания.</p>
+            <p id="about-text1">Мы команда энтузиастов живущие в ЕС с 2018-го года. И как это часто бывает, на ровне со всеми прошли определенную бюрократическую школу - от поиска работы по приезду, до оформления сопутствующих документов необходимых для комфортного прибывания в странах проживания.</p>
             
-            <p>В нашем случае это Венгрия, Германия, Словакия. Мы как никто понимаем ценность протраченого времени и знаем что его - время, можно с большим удовольствием потратить на такие вещи как семья, досуг, личные интересы. Ведь у человека, по нашим скромным подсчетам, 1330 минут в сутки, от 480-ти до 660-ти которых он работает. Порядка 480-ти он тратит на сон (если повезет), остальное занимает само-амортизация (еда, душ и т.д.)… "Ярко", не правда ли? :)</p>
+            <p id="about-text2">В нашем случае это Венгрия, Германия, Словакия. Мы как никто понимаем ценность протраченого времени и знаем что его - время, можно с большим удовольствием потратить на такие вещи как семья, досуг, личные интересы. Ведь у человека, по нашим скромным подсчетам, 1330 минут в сутки, от 480-ти до 660-ти которых он работает. Порядка 480-ти он тратит на сон (если повезет), остальное занимает само-амортизация (еда, душ и т.д.)… "Ярко", не правда ли? :)</p>
             
-            <p>И при этом, документы… Точнее необходимость их постоянного оформления… Это невозможно, друзья!.. Невозможно, спланировать все человеку, который слабо ориентируется в бюрократических моментах. НО!.. Есть и хорошая новость… Мы именно те, которые могут сохранить ваш самый ценный невосполнимый актив - время.</p>
+            <p id="about-text3">И при этом, документы… Точнее необходимость их постоянного оформления… Это невозможно, друзья!.. Невозможно, спланировать все человеку, который слабо ориентируется в бюрократических моментах. НО!.. Есть и хорошая новость… Мы именно те, которые могут сохранить ваш самый ценный невосполнимый актив - время.</p>
             
-            <p>И так, что это для вас?</p>
+            <p id="about-text4">И так, что это для вас?</p>
             
-            <p>В разделе возможности, более широко представлены базовые решения. Желаем всем удачи, и остаемся на связи!</p>
+            <p id="about-text5">В разделе возможности, более широко представлены базовые решения. Желаем всем удачи, и остаемся на связи!</p>
             
-            <p>С уважением, команда проекта F.O.E.!</p>
-            
-            <button class="back-btn" onclick="showMainScreen()">На главную</button>
+            <p id="about-text6">С уважением, команда проекта F.O.E.!</p>
         </div>
     </div>
 
     <div class="content-section" id="capabilities">
-        <h2 class="section-title">Наши возможности</h2>
+        <div class="section-nav">
+            <button class="section-nav-btn" onclick="showSection('main-screen')" id="nav-main2">Главная</button>
+            <button class="section-nav-btn" onclick="showSection('about')" id="nav-about2">О нас</button>
+            <button class="section-nav-btn" onclick="showSection('reviews')" id="nav-reviews3">Отзывы</button>
+            <button class="section-nav-btn" onclick="showSection('contacts')" id="nav-contacts3">Контакты</button>
+        </div>
+        <h2 class="section-title" id="capabilities-title">Наши возможности</h2>
         <div class="capabilities-content">
             <div class="legend">
                 <div class="legend-item legend-1">
-                    <strong>1</strong> - Подготовка к приезду
+                    <strong>1</strong> - <span id="legend-1">Подготовка к приезду</span>
                 </div>
                 <div class="legend-item legend-2">
-                    <strong>2</strong> - По приезду
+                    <strong>2</strong> - <span id="legend-2">По приезду</span>
                 </div>
                 <div class="legend-item legend-3">
-                    <strong>3</strong> - Текущее
+                    <strong>3</strong> - <span id="legend-3">Текущее</span>
                 </div>
             </div>
             
             <ul class="capabilities-list">
                 <li>
-                    <div class="capability-text">Жилье на первое время</div>
+                    <div class="capability-text" id="capability-1">Жилье на первое время</div>
                     <div class="capability-badges">
                         <span class="badge badge-2">2</span>
                     </div>
                 </li>
                 <li>
-                    <div class="capability-text">Сопровождение в вопросах краткосрочного и долгосрочного трудоустройства</div>
+                    <div class="capability-text" id="capability-2">Сопровождение в вопросах краткосрочного и долгосрочного трудоустройства</div>
                     <div class="capability-badges">
                         <span class="badge badge-1">1</span>
                         <span class="badge badge-2">2</span>
@@ -587,7 +578,7 @@
                     </div>
                 </li>
                 <li>
-                    <div class="capability-text">Оформление сопутствующих документов</div>
+                    <div class="capability-text" id="capability-3">Оформление сопутствующих документов</div>
                     <div class="capability-badges">
                         <span class="badge badge-1">1</span>
                         <span class="badge badge-2">2</span>
@@ -595,7 +586,7 @@
                     </div>
                 </li>
                 <li>
-                    <div class="capability-text">Оформление детей в садики, школы, поступление в университет</div>
+                    <div class="capability-text" id="capability-4">Оформление детей в садики, школы, поступление в университет</div>
                     <div class="capability-badges">
                         <span class="badge badge-1">1</span>
                         <span class="badge badge-2">2</span>
@@ -603,28 +594,28 @@
                     </div>
                 </li>
                 <li>
-                    <div class="capability-text">Покупка, продажа, переоформление автотранспортных средств</div>
+                    <div class="capability-text" id="capability-5">Покупка, продажа, переоформление автотранспортных средств</div>
                     <div class="capability-badges">
                         <span class="badge badge-2">2</span>
                         <span class="badge badge-3">3</span>
                     </div>
                 </li>
                 <li>
-                    <div class="capability-text">Сопровождение при беременности</div>
+                    <div class="capability-text" id="capability-6">Сопровождение при беременности</div>
                     <div class="capability-badges">
                         <span class="badge badge-2">2</span>
                         <span class="badge badge-3">3</span>
                     </div>
                 </li>
                 <li>
-                    <div class="capability-text">Справка о несудимости</div>
+                    <div class="capability-text" id="capability-7">Справка о несудимости</div>
                     <div class="capability-badges">
                         <span class="badge badge-2">2</span>
                         <span class="badge badge-3">3</span>
                     </div>
                 </li>
                 <li>
-                    <div class="capability-text">Перевод процессов связаных с юридическими моментами</div>
+                    <div class="capability-text" id="capability-8">Перевод процессов связаных с юридическими моментами</div>
                     <div class="capability-badges">
                         <span class="badge badge-1">1</span>
                         <span class="badge badge-2">2</span>
@@ -632,35 +623,35 @@
                     </div>
                 </li>
                 <li>
-                    <div class="capability-text">Сопровождение к врачу</div>
+                    <div class="capability-text" id="capability-9">Сопровождение к врачу</div>
                     <div class="capability-badges">
                         <span class="badge badge-2">2</span>
                         <span class="badge badge-3">3</span>
                     </div>
                 </li>
                 <li>
-                    <div class="capability-text">Сопровождение в вопросах аренды/приобретении недвижимости</div>
+                    <div class="capability-text" id="capability-10">Сопровождение в вопросах аренды/приобретении недвижимости</div>
                     <div class="capability-badges">
                         <span class="badge badge-2">2</span>
                         <span class="badge badge-3">3</span>
                     </div>
                 </li>
                 <li>
-                    <div class="capability-text">Сопровождение в летальных случаях</div>
+                    <div class="capability-text" id="capability-11">Сопровождение в летальных случаях</div>
                     <div class="capability-badges">
                         <span class="badge badge-2">2</span>
                         <span class="badge badge-3">3</span>
                     </div>
                 </li>
                 <li>
-                    <div class="capability-text">Сопровождение в полиции</div>
+                    <div class="capability-text" id="capability-12">Сопровождение в полиции</div>
                     <div class="capability-badges">
                         <span class="badge badge-2">2</span>
                         <span class="badge badge-3">3</span>
                     </div>
                 </li>
                 <li>
-                    <div class="capability-text">Сопровождение в оформлении форм хозяйственной деятельности</div>
+                    <div class="capability-text" id="capability-13">Сопровождение в оформлении форм хозяйственной деятельности</div>
                     <div class="capability-badges">
                         <span class="badge badge-1">1</span>
                         <span class="badge badge-2">2</span>
@@ -668,44 +659,276 @@
                     </div>
                 </li>
                 <li>
-                    <div class="capability-text">Сопровождение в получении виз в Венгрию, Словакию</div>
+                    <div class="capability-text" id="capability-14">Сопровождение в получении виз в Венгрию, Словакию</div>
                     <div class="capability-badges">
                         <span class="badge badge-1">1</span>
                     </div>
                 </li>
                 <li>
-                    <div class="capability-text">Содействие в получении ВНЖ, ПМЖ, гражданство</div>
+                    <div class="capability-text" id="capability-15">Содействие в получении ВНЖ, ПМЖ, гражданство</div>
                     <div class="capability-badges">
                         <span class="badge badge-2">2</span>
                         <span class="badge badge-3">3</span>
                     </div>
                 </li>
                 <li>
-                    <div class="capability-text">Содействие в назначении дат в разноформатные госструктуры</div>
+                    <div class="capability-text" id="capability-16">Содействие в назначении дат в разноформатные госструктуры</div>
                     <div class="capability-badges">
                         <span class="badge badge-2">2</span>
                         <span class="badge badge-3">3</span>
                     </div>
                 </li>
             </ul>
-            
-            <button class="back-btn" onclick="showMainScreen()">На главную</button>
+        </div>
+    </div>
+
+    <div class="content-section" id="reviews">
+        <div class="section-nav">
+            <button class="section-nav-btn" onclick="showSection('main-screen')" id="nav-main3">Главная</button>
+            <button class="section-nav-btn" onclick="showSection('about')" id="nav-about3">О нас</button>
+            <button class="section-nav-btn" onclick="showSection('capabilities')" id="nav-capabilities3">Наши возможности</button>
+            <button class="section-nav-btn" onclick="showSection('contacts')" id="nav-contacts4">Контакты</button>
+        </div>
+        <h2 class="section-title" id="reviews-title">Отзывы</h2>
+        <div class="reviews-content">
+            <form class="review-form" id="reviewForm">
+                <div class="form-group">
+                    <label for="name" id="form-name">Имя:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email" id="form-email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message" id="form-message">Ваш отзыв:</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn" id="form-submit">Отправить отзыв</button>
+            </form>
+            <div id="form-success" style="display: none; margin-top: 1rem; padding: 1rem; background: #e8f5e9; border-radius: 5px; text-align: center;">
+                <p id="success-message">Спасибо за ваш отзыв!</p>
+            </div>
         </div>
     </div>
 
     <div class="content-section" id="contacts">
-        <h2 class="section-title">Контакты</h2>
+        <div class="section-nav">
+            <button class="section-nav-btn" onclick="showSection('main-screen')" id="nav-main4">Главная</button>
+            <button class="section-nav-btn" onclick="showSection('about')" id="nav-about4">О нас</button>
+            <button class="section-nav-btn" onclick="showSection('capabilities')" id="nav-capabilities4">Наши возможности</button>
+            <button class="section-nav-btn" onclick="showSection('reviews')" id="nav-reviews4">Отзывы</button>
+        </div>
+        <h2 class="section-title" id="contacts-title">Контакты</h2>
         <div class="contacts-content">
-            <p>+363899805 - Венгрия, Германия</p>
-            <p>+380677990102 - Украина</p>
-            <p>Telegram, Viber, WhatsApp</p>
-            <p>themainofficialrequest@gmail.com</p>
-            
-            <button class="back-btn" onclick="showMainScreen()">На главную</button>
+            <p id="contact-1">+363899805 - Венгрия, Германия</p>
+            <p id="contact-2">+380677990102 - Украина</p>
+            <p id="contact-3">Telegram, Viber, WhatsApp</p>
+            <p id="contact-4">themainofficialrequest@gmail.com</p>
         </div>
     </div>
 
     <script>
+        const translations = {
+            ru: {
+                mainTitle: "F.O.E. - Сопровождение в Венгрии",
+                mainSubtitle: "Мы помогаем украинцам и русским с оформлением документов и адаптацией в Венгрии, Германии и Словакии",
+                mainMotto: "Сохраним ваш самый ценный актив - время!",
+                navAbout: "О нас",
+                navCapabilities: "Наши возможности",
+                navReviews: "Отзывы",
+                navContacts: "Контакты",
+                aboutTitle: "О нас",
+                capabilitiesTitle: "Наши возможности",
+                reviewsTitle: "Отзывы",
+                contactsTitle: "Контакты",
+                legend1: "Подготовка к приезду",
+                legend2: "По приезду",
+                legend3: "Текущее",
+                formName: "Имя:",
+                formEmail: "Email:",
+                formMessage: "Ваш отзыв:",
+                formSubmit: "Отправить отзыв",
+                successMessage: "Спасибо за ваш отзыв!",
+                navMain: "Главная"
+            },
+            uk: {
+                mainTitle: "F.O.E. - Супровід в Угорщині",
+                mainSubtitle: "Ми допомагаємо українцям та росіянам з оформленням документів та адаптацією в Угорщині, Німеччині та Словаччині",
+                mainMotto: "Збережемо ваш найцінніший актив - час!",
+                navAbout: "Про нас",
+                navCapabilities: "Наші можливості",
+                navReviews: "Відгуки",
+                navContacts: "Контакти",
+                aboutTitle: "Про нас",
+                capabilitiesTitle: "Наші можливості",
+                reviewsTitle: "Відгуки",
+                contactsTitle: "Контакти",
+                legend1: "Підготовка до приїзду",
+                legend2: "По приїзду",
+                legend3: "Поточне",
+                formName: "Ім'я:",
+                formEmail: "Email:",
+                formMessage: "Ваш відгук:",
+                formSubmit: "Надіслати відгук",
+                successMessage: "Дякуємо за ваш відгук!",
+                navMain: "Головна"
+            },
+            hu: {
+                mainTitle: "F.O.E. - Kísérés Magyarországon",
+                mainSubtitle: "Segítünk ukránoknak és oroszoknak dokumentumok elkészítésében és adaptációjában Magyarországon, Németországban és Szlovákiában",
+                mainMotto: "Megőrizzük legértékesebb eszközét - az időt!",
+                navAbout: "Rólunk",
+                navCapabilities: "Lehetőségeink",
+                navReviews: "Vélemények",
+                navContacts: "Kapcsolat",
+                aboutTitle: "Rólunk",
+                capabilitiesTitle: "Lehetőségeink",
+                reviewsTitle: "Vélemények",
+                contactsTitle: "Kapcsolat",
+                legend1: "Érkezés előtti előkészülés",
+                legend2: "Érkezés után",
+                legend3: "Folyamatos",
+                formName: "Név:",
+                formEmail: "Email:",
+                formMessage: "Véleményed:",
+                formSubmit: "Vélemény küldése",
+                successMessage: "Köszönjük a véleményedet!",
+                navMain: "Főoldal"
+            },
+            sk: {
+                mainTitle: "F.O.E. - Sprievod na Slovensku",
+                mainSubtitle: "Pomáhame Ukrajincom a Rusom s vybavovaním dokumentov a adaptáciou v Maďarsku, Nemecku a na Slovensku",
+                mainMotto: "Ušetríme váš najcennejší aktívum - čas!",
+                navAbout: "O nás",
+                navCapabilities: "Naše možnosti",
+                navReviews: "Recenzie",
+                navContacts: "Kontakty",
+                aboutTitle: "O nás",
+                capabilitiesTitle: "Naše možnosti",
+                reviewsTitle: "Recenzie",
+                contactsTitle: "Kontakty",
+                legend1: "Príprava na príchod",
+                legend2: "Po príchode",
+                legend3: "Bežné",
+                formName: "Meno:",
+                formEmail: "Email:",
+                formMessage: "Vaša recenzia:",
+                formSubmit: "Odoslať recenziu",
+                successMessage: "Ďakujeme za vašu recenziu!",
+                navMain: "Hlavná stránka"
+            },
+            de: {
+                mainTitle: "F.O.E. - Begleitung in Ungarn",
+                mainSubtitle: "Wir helfen Ukrainern und Russen bei der Beantragung von Dokumenten und der Anpassung in Ungarn, Deutschland und der Slowakei",
+                mainMotto: "Wir bewahren Ihre wertvollste Ressource - Zeit!",
+                navAbout: "Über uns",
+                navCapabilities: "Unsere Möglichkeiten",
+                navReviews: "Bewertungen",
+                navContacts: "Kontakte",
+                aboutTitle: "Über uns",
+                capabilitiesTitle: "Unsere Möglichkeiten",
+                reviewsTitle: "Bewertungen",
+                contactsTitle: "Kontakte",
+                legend1: "Vorbereitung auf die Ankunft",
+                legend2: "Bei Ankunft",
+                legend3: "Laufend",
+                formName: "Name:",
+                formEmail: "Email:",
+                formMessage: "Ihre Bewertung:",
+                formSubmit: "Bewertung senden",
+                successMessage: "Vielen Dank für Ihre Bewertung!",
+                navMain: "Startseite"
+            },
+            pl: {
+                mainTitle: "F.O.E. - Wsparcie na Węgrzech",
+                mainSubtitle: "Pomagamy Ukraińcom i Rosjanom w załatwianiu dokumentów i adaptacji na Węgrzech, w Niemczech i Słowacji",
+                mainMotto: "Zachowamy Twój najcenniejszy atut - czas!",
+                navAbout: "O nas",
+                navCapabilities: "Nasze możliwości",
+                navReviews: "Opinie",
+                navContacts: "Kontakty",
+                aboutTitle: "O nas",
+                capabilitiesTitle: "Nasze możliwości",
+                reviewsTitle: "Opinie",
+                contactsTitle: "Kontakty",
+                legend1: "Przygotowanie do przyjazdu",
+                legend2: "Po przyjeździe",
+                legend3: "Bieżące",
+                formName: "Imię:",
+                formEmail: "Email:",
+                formMessage: "Twoja opinia:",
+                formSubmit: "Wyślij opinię",
+                successMessage: "Dziękujemy za Twoją opinię!",
+                navMain: "Strona główna"
+            },
+            en: {
+                mainTitle: "F.O.E. - Support in Hungary",
+                mainSubtitle: "We help Ukrainians and Russians with document processing and adaptation in Hungary, Germany and Slovakia",
+                mainMotto: "We preserve your most valuable asset - time!",
+                navAbout: "About us",
+                navCapabilities: "Our capabilities",
+                navReviews: "Reviews",
+                navContacts: "Contacts",
+                aboutTitle: "About us",
+                capabilitiesTitle: "Our capabilities",
+                reviewsTitle: "Reviews",
+                contactsTitle: "Contacts",
+                legend1: "Preparation for arrival",
+                legend2: "Upon arrival",
+                legend3: "Current",
+                formName: "Name:",
+                formEmail: "Email:",
+                formMessage: "Your review:",
+                formSubmit: "Submit review",
+                successMessage: "Thank you for your review!",
+                navMain: "Main"
+            }
+        };
+
+        function changeLanguage(lang) {
+            const t = translations[lang];
+            
+            document.getElementById('main-title').textContent = t.mainTitle;
+            document.getElementById('main-subtitle').textContent = t.mainSubtitle;
+            document.getElementById('main-motto').textContent = t.mainMotto;
+            
+            document.getElementById('nav-about').textContent = t.navAbout;
+            document.getElementById('nav-capabilities').textContent = t.navCapabilities;
+            document.getElementById('nav-reviews').textContent = t.navReviews;
+            document.getElementById('nav-contacts').textContent = t.navContacts;
+            
+            document.getElementById('about-title').textContent = t.aboutTitle;
+            document.getElementById('capabilities-title').textContent = t.capabilitiesTitle;
+            document.getElementById('reviews-title').textContent = t.reviewsTitle;
+            document.getElementById('contacts-title').textContent = t.contactsTitle;
+            
+            document.getElementById('legend-1').textContent = t.legend1;
+            document.getElementById('legend-2').textContent = t.legend2;
+            document.getElementById('legend-3').textContent = t.legend3;
+            
+            document.getElementById('form-name').textContent = t.formName;
+            document.getElementById('form-email').textContent = t.formEmail;
+            document.getElementById('form-message').textContent = t.formMessage;
+            document.getElementById('form-submit').textContent = t.formSubmit;
+            document.getElementById('success-message').textContent = t.successMessage;
+            
+            const navMainButtons = document.querySelectorAll('[id^="nav-main"]');
+            navMainButtons.forEach(btn => btn.textContent = t.navMain);
+            
+            const navAboutButtons = document.querySelectorAll('[id^="nav-about"]');
+            navAboutButtons.forEach(btn => btn.textContent = t.navAbout);
+            
+            const navCapabilitiesButtons = document.querySelectorAll('[id^="nav-capabilities"]');
+            navCapabilitiesButtons.forEach(btn => btn.textContent = t.navCapabilities);
+            
+            const navReviewsButtons = document.querySelectorAll('[id^="nav-reviews"]');
+            navReviewsButtons.forEach(btn => btn.textContent = t.navReviews);
+            
+            const navContactsButtons = document.querySelectorAll('[id^="nav-contacts"]');
+            navContactsButtons.forEach(btn => btn.textContent = t.navContacts);
+        }
+
         let currentSection = 'main-screen';
         
         function showSection(sectionId) {
@@ -732,21 +955,12 @@
             }, 400);
         }
         
-        function showMainScreen() {
-            document.getElementById(currentSection).classList.add('slide-out-right');
-            
-            setTimeout(() => {
-                document.getElementById(currentSection).style.display = 'none';
-                document.getElementById(currentSection).classList.remove('slide-out-right');
-                
-                document.getElementById('main-screen').style.display = 'flex';
-                
-                window.scrollTo(0, 0);
-                
-                currentSection = 'main-screen';
-            }, 400);
-        }
-        
+        document.getElementById('reviewForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.getElementById('form-success').style.display = 'block';
+            this.reset();
+        });
+
         const style = document.createElement('style');
         style.textContent = `
             .slide-in-from-right {
