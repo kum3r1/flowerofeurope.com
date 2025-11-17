@@ -13,11 +13,12 @@
         }
         
         body {
-            background-color: #f5f7fa;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: #333;
             line-height: 1.6;
             overflow-x: hidden;
             font-family: 'Open Sans', sans-serif;
+            min-height: 100vh;
         }
         
         h1, h2, h3, h4, h5, h6 {
@@ -27,7 +28,7 @@
         
         .main-screen {
             height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+            background: linear-gradient(rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8)), 
                         url('https://kidpassage.com/images/activity/zdanie-vengerskogo-parlamenta/Vengerskiy_Parlament_01623785932.jpg');
             background-size: cover;
             background-position: center;
@@ -49,14 +50,14 @@
         .welcome-text h1 {
             font-size: 3.2rem;
             margin-bottom: 1.5rem;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
             animation: slideDown 1s ease-out;
         }
         
         .welcome-text p {
             font-size: 1.3rem;
             margin-bottom: 1rem;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
             animation: slideUp 1s ease-out 0.3s both;
         }
         
@@ -69,99 +70,170 @@
         }
         
         .nav-btn {
-            padding: 1rem 2rem;
-            background: rgba(255, 255, 255, 0.2);
-            border: 2px solid white;
-            border-radius: 30px;
+            padding: 1.2rem 2.5rem;
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            border-radius: 50px;
             color: white;
             font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s;
-            backdrop-filter: blur(5px);
+            transition: all 0.4s;
+            backdrop-filter: blur(10px);
             font-family: 'Montserrat', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .nav-btn:hover:before {
+            left: 100%;
         }
         
         .nav-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.25);
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
         
         .content-section {
             display: none;
-            padding: 4rem 2rem;
-            max-width: 1000px;
+            padding: 5rem 2rem;
+            max-width: 1100px;
             margin: 0 auto;
             animation: slideInFromRight 0.8s ease-out;
         }
         
         .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
+            font-size: 2.8rem;
+            margin-bottom: 3rem;
             text-align: center;
-            color: #2c3e50;
-            border-bottom: 3px solid #4CAF50;
-            padding-bottom: 0.5rem;
+            color: white;
+            position: relative;
             animation: fadeIn 0.8s ease-out 0.2s both;
         }
         
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #FFD700, #FFA500);
+            border-radius: 2px;
+        }
+        
         .about-content, .capabilities-content, .contacts-content {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             line-height: 1.8;
             animation: fadeIn 0.8s ease-out 0.4s both;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about-content:before, .capabilities-content:before, .contacts-content:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
         }
         
         .about-content p {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            font-size: 1.15rem;
             animation: fadeIn 0.8s ease-out 0.6s both;
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .about-content p:before {
+            content: '»';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.5rem;
         }
         
         .legend {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            background: #f0f4f8;
-            border-radius: 10px;
-            gap: 1rem;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            gap: 1.5rem;
             animation: fadeIn 0.8s ease-out 0.4s both;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
         }
         
         .legend-item {
             flex: 1;
             text-align: center;
-            padding: 1rem;
-            border-radius: 8px;
+            padding: 1.5rem;
+            border-radius: 12px;
             font-weight: 600;
             font-family: 'Montserrat', sans-serif;
-            transition: transform 0.3s;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .legend-item:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, transparent 100%);
+            opacity: 0;
+            transition: 0.3s;
+        }
+        
+        .legend-item:hover:before {
+            opacity: 1;
         }
         
         .legend-item:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
         
         .legend-1 {
-            background: #e3f2fd;
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
             color: #1565c0;
-            border-left: 4px solid #1565c0;
+            border: 2px solid #90caf9;
         }
         
         .legend-2 {
-            background: #e8f5e9;
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
             color: #2e7d32;
-            border-left: 4px solid #2e7d32;
+            border: 2px solid #a5d6a7;
         }
         
         .legend-3 {
-            background: #fff3e0;
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
             color: #ef6c00;
-            border-left: 4px solid #ef6c00;
+            border: 2px solid #ffcc80;
         }
         
         .capabilities-list {
@@ -169,12 +241,20 @@
         }
         
         .capabilities-list li {
-            padding: 1rem 0;
-            border-bottom: 1px solid #eee;
+            padding: 1.5rem;
+            border-bottom: 1px solid #e0e0e0;
             font-size: 1.1rem;
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             animation: fadeIn 0.8s ease-out both;
+            transition: all 0.3s;
+            border-radius: 10px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .capabilities-list li:hover {
+            background: rgba(102, 126, 234, 0.05);
+            transform: translateX(10px);
         }
         
         .capabilities-list li:nth-child(1) { animation-delay: 0.5s; }
@@ -196,64 +276,87 @@
         
         .capability-text {
             flex: 1;
+            font-weight: 500;
         }
         
         .capability-badges {
             display: flex;
-            gap: 0.5rem;
-            margin-left: 1rem;
+            gap: 0.8rem;
+            margin-left: 1.5rem;
         }
         
         .badge {
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
             font-size: 0.9rem;
-            font-weight: 600;
+            font-weight: 700;
             font-family: 'Montserrat', sans-serif;
-            transition: transform 0.3s;
+            transition: all 0.3s;
+            min-width: 40px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         
         .badge:hover {
-            transform: scale(1.1);
+            transform: scale(1.15) rotate(5deg);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
         
         .badge-1 {
-            background: #e3f2fd;
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
             color: #1565c0;
-            border: 1px solid #1565c0;
+            border: 2px solid #90caf9;
         }
         
         .badge-2 {
-            background: #e8f5e9;
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
             color: #2e7d32;
-            border: 1px solid #2e7d32;
+            border: 2px solid #a5d6a7;
         }
         
         .badge-3 {
-            background: #fff3e0;
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
             color: #ef6c00;
-            border: 1px solid #ef6c00;
+            border: 2px solid #ffcc80;
         }
         
         .capabilities-list li:last-child {
             border-bottom: none;
         }
         
-        .capabilities-list li:before {
-            content: "•";
-            color: #4CAF50;
-            font-weight: bold;
-            display: inline-block;
-            width: 1em;
-            margin-right: 0.5em;
+        .contacts-content {
+            text-align: center;
         }
         
         .contacts-content p {
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-            padding-left: 1rem;
-            border-left: 3px solid #4CAF50;
+            margin-bottom: 2rem;
+            font-size: 1.3rem;
+            padding: 1.5rem;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             animation: fadeIn 0.8s ease-out both;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contacts-content p:before {
+            content: '✆';
+            margin-right: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .contacts-content p:nth-child(4):before {
+            content: '✉';
+        }
+        
+        .contacts-content p:nth-child(3):before {
+            content: '📱';
+        }
+        
+        .contacts-content p:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
         
         .contacts-content p:nth-child(1) { animation-delay: 0.5s; }
@@ -263,27 +366,43 @@
         
         .back-btn {
             display: block;
-            margin: 2rem auto 0;
-            padding: 0.8rem 2rem;
-            background: #4CAF50;
+            margin: 3rem auto 0;
+            padding: 1rem 3rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border: none;
-            border-radius: 5px;
-            font-size: 1rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.4s;
             font-family: 'Montserrat', sans-serif;
             animation: fadeIn 0.8s ease-out 1s both;
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .back-btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .back-btn:hover:before {
+            left: 100%;
         }
         
         .back-btn:hover {
-            background: #45a049;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
         }
         
-        /* Анимации */
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -315,17 +434,6 @@
             from { 
                 opacity: 0;
                 transform: translateX(100px);
-            }
-            to { 
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        
-        @keyframes slideInFromLeft {
-            from { 
-                opacity: 0;
-                transform: translateX(-100px);
             }
             to { 
                 opacity: 1;
@@ -379,15 +487,15 @@
             
             .nav-btn {
                 width: 100%;
-                max-width: 250px;
+                max-width: 280px;
             }
             
             .section-title {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             
             .content-section {
-                padding: 2rem 1rem;
+                padding: 3rem 1rem;
             }
             
             .legend {
@@ -396,18 +504,26 @@
             
             .capabilities-list li {
                 flex-direction: column;
+                text-align: center;
             }
             
             .capability-badges {
                 margin-left: 0;
-                margin-top: 0.5rem;
-                justify-content: flex-start;
+                margin-top: 1rem;
+                justify-content: center;
+            }
+            
+            .about-content, .capabilities-content, .contacts-content {
+                padding: 2rem;
+            }
+            
+            .about-content p {
+                padding-left: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Главный экран -->
     <div class="main-screen" id="main-screen">
         <div class="welcome-text">
             <h1>F.O.E. - Сопровождение в Венгрии</h1>
@@ -421,7 +537,6 @@
         </div>
     </div>
 
-    <!-- Раздел "О нас" -->
     <div class="content-section" id="about">
         <h2 class="section-title">О нас</h2>
         <div class="about-content">
@@ -441,7 +556,6 @@
         </div>
     </div>
 
-    <!-- Раздел "Наши возможности" -->
     <div class="content-section" id="capabilities">
         <h2 class="section-title">Наши возможности</h2>
         <div class="capabilities-content">
@@ -579,7 +693,6 @@
         </div>
     </div>
 
-    <!-- Раздел "Контакты" -->
     <div class="content-section" id="contacts">
         <h2 class="section-title">Контакты</h2>
         <div class="contacts-content">
@@ -596,29 +709,23 @@
         let currentSection = 'main-screen';
         
         function showSection(sectionId) {
-            // Анимация выхода текущего раздела
             if (currentSection !== 'main-screen') {
                 document.getElementById(currentSection).classList.add('slide-out-left');
             } else {
                 document.getElementById(currentSection).style.animation = 'fadeOut 0.8s ease-out forwards';
             }
             
-            // Показать новый раздел после анимации
             setTimeout(() => {
-                // Скрыть текущий раздел
                 document.getElementById(currentSection).style.display = 'none';
                 document.getElementById(currentSection).classList.remove('slide-out-left');
                 
-                // Показать новый раздел
                 document.getElementById(sectionId).style.display = 'block';
                 document.getElementById(sectionId).classList.add('slide-in-from-right');
                 
-                // Прокрутить к началу раздела
                 window.scrollTo(0, 0);
                 
                 currentSection = sectionId;
                 
-                // Убрать класс анимации после завершения
                 setTimeout(() => {
                     document.getElementById(sectionId).classList.remove('slide-in-from-right');
                 }, 800);
@@ -626,26 +733,20 @@
         }
         
         function showMainScreen() {
-            // Анимация выхода текущего раздела
             document.getElementById(currentSection).classList.add('slide-out-right');
             
-            // Показать главный экран после анимации
             setTimeout(() => {
-                // Скрыть текущий раздел
                 document.getElementById(currentSection).style.display = 'none';
                 document.getElementById(currentSection).classList.remove('slide-out-right');
                 
-                // Показать главный экран
                 document.getElementById('main-screen').style.display = 'flex';
                 
-                // Прокрутить к началу
                 window.scrollTo(0, 0);
                 
                 currentSection = 'main-screen';
             }, 400);
         }
         
-        // Добавляем класс для анимации входа справа
         const style = document.createElement('style');
         style.textContent = `
             .slide-in-from-right {
