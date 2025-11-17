@@ -105,14 +105,87 @@
             font-size: 1.1rem;
         }
         
+        .legend {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #f0f4f8;
+            border-radius: 10px;
+            gap: 1rem;
+        }
+        
+        .legend-item {
+            flex: 1;
+            text-align: center;
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+        
+        .legend-1 {
+            background: #e3f2fd;
+            color: #1565c0;
+            border-left: 4px solid #1565c0;
+        }
+        
+        .legend-2 {
+            background: #e8f5e9;
+            color: #2e7d32;
+            border-left: 4px solid #2e7d32;
+        }
+        
+        .legend-3 {
+            background: #fff3e0;
+            color: #ef6c00;
+            border-left: 4px solid #ef6c00;
+        }
+        
         .capabilities-list {
             list-style-type: none;
         }
         
         .capabilities-list li {
-            padding: 0.8rem 0;
+            padding: 1rem 0;
             border-bottom: 1px solid #eee;
             font-size: 1.1rem;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .capability-text {
+            flex: 1;
+        }
+        
+        .capability-badges {
+            display: flex;
+            gap: 0.5rem;
+            margin-left: 1rem;
+        }
+        
+        .badge {
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .badge-1 {
+            background: #e3f2fd;
+            color: #1565c0;
+            border: 1px solid #1565c0;
+        }
+        
+        .badge-2 {
+            background: #e8f5e9;
+            color: #2e7d32;
+            border: 1px solid #2e7d32;
+        }
+        
+        .badge-3 {
+            background: #fff3e0;
+            color: #ef6c00;
+            border: 1px solid #ef6c00;
         }
         
         .capabilities-list li:last-child {
@@ -125,20 +198,14 @@
             font-weight: bold;
             display: inline-block;
             width: 1em;
-            margin-left: -1em;
-        }
-        
-        .legend {
-            margin-top: 2rem;
-            padding: 1rem;
-            background: #f0f4f8;
-            border-radius: 5px;
-            font-size: 0.9rem;
+            margin-right: 0.5em;
         }
         
         .contacts-content p {
             margin-bottom: 1rem;
             font-size: 1.1rem;
+            padding-left: 1rem;
+            border-left: 3px solid #4CAF50;
         }
         
         .back-btn {
@@ -185,10 +252,25 @@
             .content-section {
                 padding: 2rem 1rem;
             }
+            
+            .legend {
+                flex-direction: column;
+            }
+            
+            .capabilities-list li {
+                flex-direction: column;
+            }
+            
+            .capability-badges {
+                margin-left: 0;
+                margin-top: 0.5rem;
+                justify-content: flex-start;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Главный экран -->
     <div class="main-screen" id="main-screen">
         <div class="welcome-text">
             <h1>F.O.E. - Сопровождение в Венгрии</h1>
@@ -202,6 +284,7 @@
         </div>
     </div>
 
+    <!-- Раздел "О нас" -->
     <div class="content-section" id="about">
         <h2 class="section-title">О нас</h2>
         <div class="about-content">
@@ -221,32 +304,145 @@
         </div>
     </div>
 
+    <!-- Раздел "Наши возможности" -->
     <div class="content-section" id="capabilities">
         <h2 class="section-title">Наши возможности</h2>
         <div class="capabilities-content">
+            <div class="legend">
+                <div class="legend-item legend-1">
+                    <strong>1</strong> - Подготовка к приезду
+                </div>
+                <div class="legend-item legend-2">
+                    <strong>2</strong> - По приезду
+                </div>
+                <div class="legend-item legend-3">
+                    <strong>3</strong> - Текущее
+                </div>
+            </div>
+            
             <ul class="capabilities-list">
-                <li>Жилье на первое время</li>
-                <li>Сопровождение в вопросах краткосрочного и долгосрочного трудоустройства</li>
-                <li>Оформление сопутствующих документов</li>
-                <li>Оформление детей в садики, школы, поступление в университет</li>
-                <li>Покупка, продажа, переоформление автотранспортных средств</li>
-                <li>Сопровождение при беременности</li>
-                <li>Справка о несудимости</li>
-                <li>Перевод процессов связаных с юридическими моментами</li>
-                <li>Сопровождение к врачу</li>
-                <li>Сопровождение в вопросах аренды/приобретении недвижимости</li>
-                <li>Сопровождение в летальных случаях</li>
-                <li>Сопровождение в полиции</li>
-                <li>Сопровождение в оформлении форм хозяйственной деятельности</li>
-                <li>Сопровождение в получении виз в Венгрию, Словакию</li>
-                <li>Содействие в получении ВНЖ, ПМЖ, гражданство</li>
-                <li>Содействие в назначении дат в разноформатные госструктуры</li>
+                <li>
+                    <div class="capability-text">Жилье на первое время</div>
+                    <div class="capability-badges">
+                        <span class="badge badge-2">2</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="capability-text">Сопровождение в вопросах краткосрочного и долгосрочного трудоустройства</div>
+                    <div class="capability-badges">
+                        <span class="badge badge-1">1</span>
+                        <span class="badge badge-2">2</span>
+                        <span class="badge badge-3">3</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="capability-text">Оформление сопутствующих документов</div>
+                    <div class="capability-badges">
+                        <span class="badge badge-1">1</span>
+                        <span class="badge badge-2">2</span>
+                        <span class="badge badge-3">3</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="capability-text">Оформление детей в садики, школы, поступление в университет</div>
+                    <div class="capability-badges">
+                        <span class="badge badge-1">1</span>
+                        <span class="badge badge-2">2</span>
+                        <span class="badge badge-3">3</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="capability-text">Покупка, продажа, переоформление автотранспортных средств</div>
+                    <div class="capability-badges">
+                        <span class="badge badge-2">2</span>
+                        <span class="badge badge-3">3</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="capability-text">Сопровождение при беременности</div>
+                    <div class="capability-badges">
+                        <span class="badge badge-2">2</span>
+                        <span class="badge badge-3">3</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="capability-text">Справка о несудимости</div>
+                    <div class="capability-badges">
+                        <span class="badge badge-2">2</span>
+                        <span class="badge badge-3">3</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="capability-text">Перевод процессов связаных с юридическими моментами</div>
+                    <div class="capability-badges">
+                        <span class="badge badge-1">1</span>
+                        <span class="badge badge-2">2</span>
+                        <span class="badge badge-3">3</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="capability-text">Сопровождение к врачу</div>
+                    <div class="capability-badges">
+                        <span class="badge badge-2">2</span>
+                        <span class="badge badge-3">3</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="capability-text">Сопровождение в вопросах аренды/приобретении недвижимости</div>
+                    <div class="capability-badges">
+                        <span class="badge badge-2">2</span>
+                        <span class="badge badge-3">3</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="capability-text">Сопровождение в летальных случаях</div>
+                    <div class="capability-badges">
+                        <span class="badge badge-2">2</span>
+                        <span class="badge badge-3">3</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="capability-text">Сопровождение в полиции</div>
+                    <div class="capability-badges">
+                        <span class="badge badge-2">2</span>
+                        <span class="badge badge-3">3</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="capability-text">Сопровождение в оформлении форм хозяйственной деятельности</div>
+                    <div class="capability-badges">
+                        <span class="badge badge-1">1</span>
+                        <span class="badge badge-2">2</span>
+                        <span class="badge badge-3">3</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="capability-text">Сопровождение в получении виз в Венгрию, Словакию</div>
+                    <div class="capability-badges">
+                        <span class="badge badge-1">1</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="capability-text">Содействие в получении ВНЖ, ПМЖ, гражданство</div>
+                    <div class="capability-badges">
+                        <span class="badge badge-2">2</span>
+                        <span class="badge badge-3">3</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="capability-text">Содействие в назначении дат в разноформатные госструктуры</div>
+                    <div class="capability-badges">
+                        <span class="badge badge-2">2</span>
+                        <span class="badge badge-3">3</span>
+                    </div>
+                </li>
             </ul>
             
             <button class="back-btn" onclick="showMainScreen()">На главную</button>
         </div>
     </div>
 
+    <!-- Раздел "Контакты" -->
     <div class="content-section" id="contacts">
         <h2 class="section-title">Контакты</h2>
         <div class="contacts-content">
@@ -261,30 +457,35 @@
 
     <script>
         function showSection(sectionId) {
+            // Скрыть главный экран
             document.getElementById('main-screen').style.display = 'none';
             
+            // Скрыть все разделы
             const sections = document.querySelectorAll('.content-section');
             sections.forEach(section => {
                 section.style.display = 'none';
             });
             
+            // Показать выбранный раздел
             document.getElementById(sectionId).style.display = 'block';
             
+            // Прокрутить к началу раздела
             window.scrollTo(0, 0);
         }
         
         function showMainScreen() {
+            // Скрыть все разделы
             const sections = document.querySelectorAll('.content-section');
             sections.forEach(section => {
                 section.style.display = 'none';
             });
             
+            // Показать главный экран
             document.getElementById('main-screen').style.display = 'flex';
             
+            // Прокрутить к началу
             window.scrollTo(0, 0);
         }
     </script>
 </body>
 </html>
-
-
