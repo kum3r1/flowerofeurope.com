@@ -60,6 +60,7 @@
             text-align: center;
             color: white;
             padding: 20px;
+            animation: fadeIn 0.5s ease-out;
         }
         
         .welcome-text {
@@ -71,12 +72,14 @@
             font-size: 3.2rem;
             margin-bottom: 1.5rem;
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            animation: slideDown 0.6s ease-out;
         }
         
         .welcome-text p {
             font-size: 1.3rem;
             margin-bottom: 1rem;
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+            animation: slideUp 0.6s ease-out 0.2s both;
         }
         
         .nav-buttons {
@@ -84,6 +87,7 @@
             gap: 1.5rem;
             flex-wrap: wrap;
             justify-content: center;
+            animation: fadeIn 0.6s ease-out 0.4s both;
         }
         
         .nav-btn {
@@ -110,6 +114,7 @@
             padding: 4rem 2rem;
             max-width: 1000px;
             margin: 0 auto;
+            min-height: 100vh;
         }
         
         .section-nav {
@@ -322,23 +327,101 @@
             transform: translateY(-2px);
         }
         
-        .back-btn {
-            display: block;
-            margin: 2rem auto 0;
-            padding: 0.8rem 2rem;
-            background: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.3s;
-            font-family: 'Montserrat', sans-serif;
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         
-        .back-btn:hover {
-            background: #45a049;
+        @keyframes slideDown {
+            from { 
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInFromRight {
+            from { 
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes slideInFromLeft {
+            from { 
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .slide-in-right {
+            animation: slideInFromRight 0.4s ease-out forwards;
+        }
+        
+        .slide-in-left {
+            animation: slideInFromLeft 0.4s ease-out forwards;
+        }
+        
+        .slide-out-right {
+            animation: slideOutToRight 0.4s ease-out forwards;
+        }
+        
+        @keyframes slideOutToRight {
+            from { 
+                opacity: 1;
+                transform: translateX(0);
+            }
+            to { 
+                opacity: 0;
+                transform: translateX(50px);
+            }
+        }
+        
+        .slide-out-left {
+            animation: slideOutToLeft 0.4s ease-out forwards;
+        }
+        
+        @keyframes slideOutToLeft {
+            from { 
+                opacity: 1;
+                transform: translateX(0);
+            }
+            to { 
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+        }
+        
+        .fade-out {
+            animation: fadeOut 0.4s ease-out forwards;
+        }
+        
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
         }
         
         @media (max-width: 768px) {
@@ -832,14 +915,49 @@
             navContactsButtons.forEach(btn => btn.textContent = t.navContacts);
         }
 
+        let currentSection = 'main-screen';
+        
         function showSection(sectionId) {
-            const sections = document.querySelectorAll('.content-section, .main-screen');
-            sections.forEach(section => {
-                section.style.display = 'none';
-            });
+            const currentElement = document.getElementById(currentSection);
+            const nextElement = document.getElementById(sectionId);
             
-            document.getElementById(sectionId).style.display = sectionId === 'main-screen' ? 'flex' : 'block';
-            window.scrollTo(0, 0);
+            // Определяем направление анимации
+            const isGoingToMain = sectionId === 'main-screen';
+            const isComingFromMain = currentSection === 'main-screen';
+            
+            // Анимация выхода
+            if (isComingFromMain) {
+                currentElement.classList.add('fade-out');
+            } else if (isGoingToMain) {
+                currentElement.classList.add('slide-out-right');
+            } else {
+                currentElement.classList.add('slide-out-left');
+            }
+            
+            // Показываем следующий элемент после анимации
+            setTimeout(() => {
+                currentElement.style.display = 'none';
+                currentElement.classList.remove('fade-out', 'slide-out-left', 'slide-out-right');
+                
+                nextElement.style.display = isGoingToMain ? 'flex' : 'block';
+                
+                // Анимация входа
+                if (isGoingToMain) {
+                    nextElement.classList.add('fade-in');
+                } else if (isComingFromMain) {
+                    nextElement.classList.add('slide-in-right');
+                } else {
+                    nextElement.classList.add('slide-in-left');
+                }
+                
+                window.scrollTo(0, 0);
+                currentSection = sectionId;
+                
+                // Убираем класс анимации после завершения
+                setTimeout(() => {
+                    nextElement.classList.remove('fade-in', 'slide-in-left', 'slide-in-right');
+                }, 400);
+            }, 200);
         }
         
         document.getElementById('reviewForm').addEventListener('submit', function(e) {
@@ -847,6 +965,19 @@
             document.getElementById('form-success').style.display = 'block';
             this.reset();
         });
+
+        // Добавляем недостающие анимации
+        const style = document.createElement('style');
+        style.textContent = `
+            .fade-in {
+                animation: fadeIn 0.4s ease-out forwards;
+            }
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>
